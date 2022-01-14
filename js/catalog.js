@@ -33,7 +33,19 @@ reloadGoodsCounter();
 
 // записывает итоговую сумму корзины в header
 let totalHTML = document.querySelector('.cart-label__total');
-totalHTML.innerHTML = `${dataService['total']} RUB`;
+
+function showTotal(total) {
+    if (total === 0) {
+        totalHTML.innerHTML = 'Корзина';
+        totalHTML.classList.remove('totalCSS');
+    }
+    else {
+        totalHTML.innerHTML = `${total} p.`;
+        totalHTML.classList.add('totalCSS');
+    }
+}
+showTotal(dataService['total']);
+// totalHTML.innerHTML = `${dataService['total']} RUB`;
 
 
 /* -------------------------------------------------------- */
@@ -70,7 +82,7 @@ function addEventOnGoods() {
         card.addEventListener('click', function (event) {
             let target = event.target;
 
-            if (target.classList.contains('goods__button')) {
+            if (target.classList.contains('add-in-cart')) {
                 let articul = card.getAttribute('data-articul');
 
                 if (dataCart[articul] !== undefined) {
@@ -90,7 +102,7 @@ function addEventOnGoods() {
 
                 dataService['total'] = calculateTotal(dataCart);
                 goodsCounterHTML.innerHTML = dataService['goodsCounter'];
-                totalHTML.innerHTML = `${dataService['total']} RUB`;
+                showTotal(dataService['total']);
                 reloadGoodsCounter()
             }
             // !!!!!! Добавить проверку уже имеющихся данных в локалСторадж
