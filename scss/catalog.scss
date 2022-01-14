@@ -22,7 +22,6 @@
 @import "_header";
 
 // стили для main
-
 .main {
     &__row {
         display: flex;
@@ -69,7 +68,7 @@
         }
 
         .fa-heart:hover:before {
-            color: rgb(199, 3, 3);
+            color: $hoverColorRed;
         }
     }
 
@@ -102,7 +101,7 @@
     &__title:hover {
         a {
             transition: 0.2;
-            color: red;
+            color: $hoverColorRed;
         }
     }
 
@@ -125,7 +124,7 @@
         width: 36px;
         height: 36px;
         border-radius: 50%;
-        background-color: red;
+        background-color: $mainColorRed;
         transition: 0.2;
         cursor: pointer;
 
@@ -140,7 +139,7 @@
 
     &__button:hover {
         transition: 0.2;
-        background-color: rgb(199, 3, 3);
+        background-color: $hoverColorRed;
 
         .fa-shopping-cart::before {
             position: relative;

@@ -28,13 +28,28 @@
 .fa-heart:before {
     content: "\f004";
     font-size: 22px;
-    color: red;
+    color: $mainColorRed;
 }
 
 .fa-shopping-cart:before {
     content: "\f07a";
     font-size: 22px;
-    color: red;
+    color: $mainColorRed;
+}
+.fa-chevron-left:before {
+    content: "\f053";
+    font-size: 18px;
+    color: $mainColorRed;
+}
+.fa-minus:before {
+    content: "\f068";
+    font-size: 16px;
+    color: #666;
+}
+.fa-plus:before {
+    content: "\f067";
+    font-size: 16px;
+    color: #666;
 }
 
 @font-face {

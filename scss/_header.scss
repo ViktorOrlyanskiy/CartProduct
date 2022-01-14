@@ -87,7 +87,7 @@
         font-size: 14px;
     }
     &__text:hover {
-        color: red;
+        color: $hoverColorRed;
     }
 }
 
@@ -155,7 +155,7 @@
         font-size: 14px;
     }
     &__total:hover {
-        color: red;
+        color: $hoverColorRed;
     }
 }
 
