@@ -213,7 +213,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .sticky__text:hover {
-  color: red;
+  color: #c50000;
 }
 
 .search {
@@ -315,7 +315,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .cart-label__total:hover {
-  color: red;
+  color: #c50000;
 }
 
 .totalCSS {

@@ -42,7 +42,7 @@ class Goods {
         let goodsRow = document.querySelector('.goods__row');
         let count = 1;
         for (let key in data) {
-            if (count <= 6) {
+            if (count <= 8) {
                 if (listCards[key] === undefined) {
                     let articul = key;
                     this.setCard(articul, data);
@@ -62,7 +62,8 @@ class Goods {
                     card += `<a href="#">${data[articul]['name']}</a>`;
                     card += `</h2>`;
                     card += `<div class="goods__line">`;
-                    card += `<div class="goods__price">${data[articul]['price']} <span>р.</span></div>`;
+                    card += `<div class="goods__price">
+                    ${spaceBetweenNumbers(data[articul]['price'])} <span>р.</span></div>`;
                     card += `<div class="goods__button add-in-cart">`;
                     card += `<i class="fa fa-shopping-cart add-in-cart" aria-hidden="true"></i>`;
                     card += `</div>`;

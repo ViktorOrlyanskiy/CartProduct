@@ -139,6 +139,7 @@
         font-weight: 300;
         margin: 0 15px;
         cursor: pointer;
+        user-select: none;
     }
     &__btn-delete:hover {
         transition: 0.2s;
@@ -242,9 +243,13 @@
         color: #fff;
         margin: 30px auto 20px auto;
         cursor: pointer;
+        user-select: none;
     }
     &__btn-order:hover {
         transition: 0.2s;
         background-color: $hoverColorRed;
     }
 }
+
+// служебные стили для javaScript
+@import "_servicestyle";

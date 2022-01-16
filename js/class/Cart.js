@@ -83,52 +83,39 @@ class Cart {
         this.goodsCounter = 0; // обнуляем так как постоянно перерисовывается таблица
         this.total = 0; // обнуляем так как постоянно перерисовывается таблица
 
-        let table = document.createElement('table');
-        table.classList.add('cart__table');
 
         for (let articul in data) {
             let product = data[articul];
 
-            let tr = document.createElement('tr');
-            tr.classList.add('cart__tr');
-            tr.setAttribute('data-articul', articul);
+            let productHTML = `<div class="product" data-articul="${articul}">`;
+            productHTML += `<div class="product__image">`;
+            productHTML += `<img src="${product['image']}" alt="#">`;
+            productHTML += `</div>`;
+            productHTML += `<div class="product__body">`;
+            productHTML += `<div class="product__name">${product['name']}</div>`;
+            productHTML += `<div class="product__buttons">`;
+            productHTML += `<div class="product__btn-minus btn-counter minus">`;
+            productHTML += `<i class="fas fa-minus minus"></i>`;
+            productHTML += `</div>`;
+            productHTML += `<div class="product__count">${product['count']}</div>`;
+            productHTML += `<div class="product__btn-plus btn-counter plus">`;
+            productHTML += `<i class="fas fa-plus plus"></i>`;
+            productHTML += `</div>`;
+            productHTML += `<div class="product__sum">
+            ${spaceBetweenNumbers(this.sumProduct(product))}<span> p.</span></div>`;
+            productHTML += `<div class="product__btn-heart">`;
+            productHTML += `<i class="far fa-heart" aria-hidden="true"></i>`;
+            productHTML += `</div>`;
+            productHTML += `<div class="product__btn-delete">&#215</div>`;
+            productHTML += ` </div>`;
+            productHTML += ` </div>`;
+            productHTML += ` </div>`;
 
-            for (let i = 0; i < 7; i++) {
-                let td = `<td class="cart__td td">`;
-                if (i === 0) {
-                    td += `<div class="td__btn-delete td-btn" ></>`;
-                    td += `</td>`;
-                }
-                else if (i === 1) {
-                    td += `<img src="${product['image']}" alt="#" class="td__img">`;
-                    td += `</td>`;
-                }
-                else if (i === 2) {
-                    td += `<div class="td__name">${product['name']}</div>`;
-                    td += `</td>`;
-                }
-                else if (i === 3) {
-                    td += `<div class="td__btn-minus td-btn">-</div>`;
-                    td += `</td>`;
-                }
-                else if (i === 4) {
-                    td += `<div class="td__count">${product['count']}</div>`;
-                    td += `</td>`;
-                }
-                else if (i === 5) {
-                    td += `<div class="td__btn-plus td-btn">+</div>`;
-                    td += `</td>`;
-                }
-                else if (i === 6) {
-                    td += `<div class="td__sum">${this.sumProduct(product)} RUB</div>`;
-                    td += `</td>`;
-                }
-                tr.innerHTML += td;
-            }
+
             this.goodsCounter += product['count'];
             this.total += this.sumProduct(product);
-            table.append(tr);
+            this.cart.innerHTML += productHTML;
         }
-        this.cart.append(table);
+
     }
 }

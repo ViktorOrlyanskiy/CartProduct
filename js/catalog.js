@@ -1,5 +1,11 @@
 'use strict'
 
+/**
+ * Создает глобальные массивы для хранения товаров добавленные в корзину [dataCart], хранения количества добавленных товаров и итоговой сумму [dataService].
+ * Обновляет и выводит данные из dataService в header
+ * Отрисовывает товары каталога и добавляет события на них
+ */
+
 // глобальный массив для хранения товаров в корзине
 let dataCart = {};
 
@@ -13,9 +19,12 @@ let dataService = {
 let listCards = {};
 
 
-/* Обновляет глобальные массивы и выводит данные на страницу */
-dataCart = reloadDataOutLS('dataCart', dataCart);
-dataService = reloadDataOutLS('dataService', dataService);
+// работа с блоком header -------------
+
+//  Обновляет глобальные массивы
+dataCart = reloadDataFromLS('dataCart', dataCart);
+dataService = reloadDataFromLS('dataService', dataService);
+
 
 // записывает количество товаров корзины в header
 let goodsCounterHTML = document.querySelector('.cart-label__count');
@@ -31,6 +40,7 @@ function reloadGoodsCounter() {
 }
 reloadGoodsCounter();
 
+
 // записывает итоговую сумму корзины в header
 let totalHTML = document.querySelector('.cart-label__total');
 
@@ -40,23 +50,22 @@ function showTotal(total) {
         totalHTML.classList.remove('totalCSS');
     }
     else {
-        totalHTML.innerHTML = `${total} p.`;
+        totalHTML.innerHTML = `${spaceBetweenNumbers(total)} p.`;
         totalHTML.classList.add('totalCSS');
     }
 }
 showTotal(dataService['total']);
-// totalHTML.innerHTML = `${dataService['total']} RUB`;
+// ------------------------------------------
 
 
-/* -------------------------------------------------------- */
+// Работа с товарами каталога -------------
 
 
-// выводит первые 6 товаров на страницу
 drawProducts(products);
 
 let btnAddGoods = document.querySelector('.add-goods');
 btnAddGoods.addEventListener('click', () => {
-    drawProducts(products)
+    drawProducts(products);
 })
 
 // отрисовывает товары на странице и добавляет обработку события
@@ -65,14 +74,14 @@ function drawProducts(products) {
     listProducts.render(products);
     checkCountCards(listProducts.getCountCards())
     addEventOnGoods(products);
-}
 
-// проверяет количество отрисованных товаров
-function checkCountCards(count) {
-    if (count < 6) {
-        btnAddGoods.classList.add('hidden');
+    function checkCountCards(count) {
+        if (count < 6) {
+            btnAddGoods.classList.add('hidden');
+        }
     }
 }
+
 
 // добавляет событие на товары
 function addEventOnGoods() {
@@ -105,37 +114,29 @@ function addEventOnGoods() {
                 showTotal(dataService['total']);
                 reloadGoodsCounter()
             }
-            // !!!!!! Добавить проверку уже имеющихся данных в локалСторадж
+
             localStorage.setItem('dataCart', JSON.stringify(dataCart))
             localStorage.setItem('dataService', JSON.stringify(dataService))
         })
     })
-}
 
 
-// обновляет данные из localStorage
-function reloadDataOutLS(key, data) {
-    let dataLS = JSON.parse(localStorage.getItem(key));
-
-    if (dataLS === null) {
-        return data
+    // считает сумму по отдельному товару в корзине 
+    function sumProduct(product) {
+        return product['count'] * product['price']
     }
-    else {
-        return dataLS
+
+    // считает итоговую сумму в корзине
+    function calculateTotal(dataCart) {
+        let total = 0;
+        for (let articul in dataCart) {
+            let product = dataCart[articul];
+            total += product['sumProduct'];
+        }
+        return total
     }
 }
 
-// считает сумму по отдельному товару в корзине 
-function sumProduct(product) {
-    return product['count'] * product['price']
-}
 
-// считает итоговую сумму в корзине
-function calculateTotal(dataCart) {
-    let total = 0;
-    for (let articul in dataCart) {
-        let product = dataCart[articul];
-        total += product['sumProduct'];
-    }
-    return total
-}
+
+

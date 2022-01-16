@@ -4,6 +4,9 @@
 // Подключение шрифтов
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
 
+// Подключение глобальных переменных
+@import "_variables";
+
 // Подключение иконок
 @import "_icons";
 
@@ -30,17 +33,48 @@
 }
 .sidebar {
     flex: 0 0 300px;
-    margin: 0 10px 0 0;
+    margin: 0 30px 0 0;
     background-color: cadetblue;
 }
 .content {
     flex: 0 0 990px;
 }
 
+// стили для блока сортировки
+.sorting {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    margin: 15px 10px;
+
+    &__title {
+        color: #666;
+        padding: 6px 0;
+    }
+
+    &__item {
+        color: #999;
+        margin: 0 10px;
+        cursor: pointer;
+        user-select: none;
+        &_active {
+            color: #212121;
+        }
+    }
+    &__item:hover {
+        transition: 0.2s;
+        color: $hoverColorRed;
+    }
+    &__item_active:hover {
+        color: #212121;
+    }
+}
+
+// стили для карточек товаров
 .goods__row {
     display: flex;
     flex-wrap: wrap;
-    justify-content: start;
+    justify-content: space-between;
     margin: 20px 0 20px 0;
 }
 
@@ -82,6 +116,7 @@
         justify-content: center;
         align-items: center;
         margin: 0 0 30px 0;
+
         img {
             max-width: 190px;
             max-height: 190px;
@@ -89,7 +124,10 @@
     }
 
     &__title {
+        flex: 1 1 auto;
+        max-height: 60px;
         margin: 0 0 20px 0;
+        overflow: hidden;
         a {
             font-size: 14px;
             line-height: 1.4;
@@ -154,6 +192,26 @@
 .goods:hover {
     transition: 0.2;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.add-goods {
+    max-width: 100%;
+    height: 44px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+    font-size: 18px;
+    font-weight: 700;
+    color: #666;
+    cursor: pointer;
+    user-select: none;
+}
+
+.add-goods:hover {
+    transition: 0.1s;
+    box-shadow: 0 2px 8px 1px rgba(0, 0, 0, 0.5);
 }
 
 // стили для нижней кнопки

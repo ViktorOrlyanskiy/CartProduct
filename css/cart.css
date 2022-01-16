@@ -593,6 +593,10 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 300;
   margin: 0 15px;
   cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .product__btn-delete:hover {
@@ -738,10 +742,18 @@ h1, h2, h3, h4, h5, h6 {
   color: #fff;
   margin: 30px auto 20px auto;
   cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .total__btn-order:hover {
   -webkit-transition: 0.2s;
   transition: 0.2s;
   background-color: #c50000;
+}
+
+.hidden {
+  display: none;
 }
