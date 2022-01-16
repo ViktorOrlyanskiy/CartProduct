@@ -181,6 +181,7 @@
             display: flex;
             align-items: center;
             color: #212121;
+            user-select: none;
         }
         a:hover {
             color: $hoverColorRed;

@@ -49,24 +49,36 @@ class Cart {
     *  Metod delProduct - удаляет товар из корзины
     */
     delProduct(articul, data) {
-        delete data[articul];
+        for (let i = 0; i < data.length; i++) {
+            if (data[i]['articul'] === articul) {
+                data.splice(i, 1)
+            }
+        }
     }
 
     /**
     *  Metod minusProduct - умeньшает количество товара в корзине
     */
     minusProduct(articul, data) {
-        data[articul]['count']--;
-        if (data[articul]['count'] === 0) [
-            this.delProduct(articul, data)
-        ]
+        for (let i = 0; i < data.length; i++) {
+            if (data[i]['articul'] === articul) {
+                data[i]['count']--;
+                if (data[i]['count'] === 0) {
+                    this.delProduct(articul, data)
+                }
+            }
+        }
     }
 
     /**
     *  Metod plusProduct - увеличивает количество товара в корзине
     */
     plusProduct(articul, data) {
-        data[articul]['count']++;
+        for (let i = 0; i < data.length; i++) {
+            if (data[i]['articul'] === articul) {
+                data[i]['count']++;
+            }
+        }
     }
 
     /**
@@ -84,10 +96,9 @@ class Cart {
         this.total = 0; // обнуляем так как постоянно перерисовывается таблица
 
 
-        for (let articul in data) {
-            let product = data[articul];
+        for (let product of data) {
 
-            let productHTML = `<div class="product" data-articul="${articul}">`;
+            let productHTML = `<div class="product" data-articul="${product['articul']}">`;
             productHTML += `<div class="product__image">`;
             productHTML += `<img src="${product['image']}" alt="#">`;
             productHTML += `</div>`;

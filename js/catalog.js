@@ -7,7 +7,7 @@
  */
 
 // глобальный массив для хранения товаров в корзине
-let dataCart = {};
+let dataCart = [];
 
 // глобальный массив для хранения total и goodsCounter
 let dataService = {
@@ -16,7 +16,7 @@ let dataService = {
 };
 
 // глобальный массив для хранения отрисованных артикулов
-let listCards = {};
+let listCards = [];
 
 
 // работа с блоком header -------------
@@ -59,8 +59,6 @@ showTotal(dataService['total']);
 
 
 // Работа с товарами каталога -------------
-
-
 drawProducts(products);
 
 let btnAddGoods = document.querySelector('.add-goods');
@@ -72,11 +70,12 @@ btnAddGoods.addEventListener('click', () => {
 function drawProducts(products) {
     let listProducts = new Goods();
     listProducts.render(products);
+
     checkCountCards(listProducts.getCountCards())
     addEventOnGoods(products);
 
     function checkCountCards(count) {
-        if (count < 6) {
+        if (count < 8) {
             btnAddGoods.classList.add('hidden');
         }
     }
@@ -93,49 +92,74 @@ function addEventOnGoods() {
 
             if (target.classList.contains('add-in-cart')) {
                 let articul = card.getAttribute('data-articul');
+                let product = returnProduct(articul, listCards);
 
-                if (dataCart[articul] !== undefined) {
-                    dataCart[articul]['count']++;
-                    dataCart[articul]['sumProduct'] = sumProduct(dataCart[articul]);
+                if (checkProductInArray(product, dataCart)) {
+                    product = returnProduct(articul, dataCart);
+                    product['count']++;
+                    product['sumProduct'] = sumProduct(product);
 
                     dataService['goodsCounter']++;
-
                 }
                 else {
-                    dataCart[articul] = listCards[articul];
-                    dataCart[articul]['count'] = 1;
-                    dataCart[articul]['sumProduct'] = sumProduct(dataCart[articul]);
+                    product = returnProduct(articul, listCards);
+                    product['count'] = 1;
+                    product['sumProduct'] = sumProduct(product);
+                    dataCart.push(product);
 
                     dataService['goodsCounter']++;
+
                 }
 
                 dataService['total'] = calculateTotal(dataCart);
                 goodsCounterHTML.innerHTML = dataService['goodsCounter'];
                 showTotal(dataService['total']);
-                reloadGoodsCounter()
+                reloadGoodsCounter();
             }
 
-            localStorage.setItem('dataCart', JSON.stringify(dataCart))
-            localStorage.setItem('dataService', JSON.stringify(dataService))
+            localStorage.setItem('dataCart', JSON.stringify(dataCart));
+            localStorage.setItem('dataService', JSON.stringify(dataService));
         })
     })
 
 
-    // считает сумму по отдельному товару в корзине 
+    // считает сумму по отдельному товару в корзине
     function sumProduct(product) {
-        return product['count'] * product['price']
+        product['sumProduct'] = 0;
+        return (product['count'] * product['price'])
     }
 
     // считает итоговую сумму в корзине
     function calculateTotal(dataCart) {
         let total = 0;
-        for (let articul in dataCart) {
-            let product = dataCart[articul];
+        for (let product of dataCart) {
             total += product['sumProduct'];
         }
         return total
     }
+
+    // возвращает товар из массива
+    function returnProduct(articul, array) {
+        for (let item of array) {
+            if (item['articul'] === articul) {
+                return item
+            }
+        }
+    }
+
+    // проверяет содержит массив товар или нет
+    function checkProductInArray(product, array) {
+        if (array.length !== 0) {
+            for (let item of array) {
+                if (item['articul'] === product['articul']) {
+                    return true
+                }
+            }
+        }
+    }
 }
+
+
 
 
 
