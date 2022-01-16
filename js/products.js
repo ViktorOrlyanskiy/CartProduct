@@ -1064,10 +1064,10 @@ const products = [
 ]
 
 
-let popularity = document.querySelector('.popularity');
-popularity.addEventListener('click', function () {
+// let popularity = document.querySelector('.popularity');
+// popularity.addEventListener('click', function () {
 
-    products.sort((a, b) => Number(a.sales) > Number(b.sales) ? 1 : -1)
+//     products.sort((a, b) => Number(a.sales) > Number(b.sales) ? 1 : -1)
 
 
-});
+// });

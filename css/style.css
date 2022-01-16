@@ -107,7 +107,7 @@ h6 {
 .header__line_sticky {
   background-color: #f0f0f0;
   -webkit-box-shadow: 0 1px 5px 2px #c7c7c7;
-  box-shadow: 0 1px 5px 2px #c7c7c7;
+          box-shadow: 0 1px 5px 2px #c7c7c7;
 }
 
 .sticky {
@@ -115,8 +115,8 @@ h6 {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   text-align: center;
   padding: 7px 0;
 }
@@ -128,11 +128,11 @@ h6 {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
   background-color: #666;
   border-radius: 6px;
   cursor: pointer;
@@ -169,11 +169,11 @@ h6 {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .sticky__selected-products a {
@@ -181,11 +181,11 @@ h6 {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .sticky__selected-products__count {
@@ -200,11 +200,11 @@ h6 {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
   padding: 1px 1px 0 0;
   font-weight: 700;
   font-size: 11px;
@@ -215,11 +215,11 @@ h6 {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .sticky__text {
@@ -256,11 +256,11 @@ h6 {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
   cursor: pointer;
 }
 
@@ -269,11 +269,11 @@ h6 {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
   cursor: pointer;
 }
 
@@ -282,11 +282,11 @@ h6 {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
   color: black;
 }
 
@@ -307,11 +307,11 @@ h6 {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
   padding: 1px 1px 0 0;
   font-weight: 700;
   font-size: 11px;
@@ -322,11 +322,11 @@ h6 {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
   font-size: 14px;
 }
 
@@ -344,33 +344,33 @@ h6 {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
+      flex-wrap: wrap;
   -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   margin: 20px 0 20px 0;
 }
 
 .goods {
   -webkit-box-flex: 0;
-  -ms-flex: 0 1 30%;
-  flex: 0 1 30%;
+      -ms-flex: 0 1 30%;
+          flex: 0 1 30%;
   margin: 15px;
   padding: 10px;
   border: 1.5px solid black;
   -webkit-box-shadow: 1px 1px 5px 0 #9c9c9c;
-  box-shadow: 1px 1px 5px 0 #9c9c9c;
+          box-shadow: 1px 1px 5px 0 #9c9c9c;
   border-radius: 10px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .goods__title {
@@ -411,9 +411,9 @@ h6 {
   margin: 0 0 15px 0;
   cursor: pointer;
   -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .goods__button:hover {
@@ -426,7 +426,7 @@ h6 {
   -webkit-transition: 0.1s;
   transition: 0.1s;
   -webkit-transform: scale(0.95);
-  transform: scale(0.95);
+          transform: scale(0.95);
 }
 
 .add-goods {
@@ -470,14 +470,14 @@ h6 {
   margin: 0 auto;
   cursor: pointer;
   -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .td-btn:active {
   -webkit-transform: scale(0.9);
-  transform: scale(0.9);
+          transform: scale(0.9);
 }
 
 .td {
@@ -494,9 +494,9 @@ h6 {
 .td__img {
   width: 50px;
   -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .td__name {

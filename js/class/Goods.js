@@ -11,6 +11,7 @@ class Goods {
     constructor(data) {
         this.data = data;
         this.count = 0;
+        this.goodsRow = document.querySelector('.goods__row');
     }
 
 
@@ -49,6 +50,14 @@ class Goods {
     }
 
     /**
+    *  Method clearGoodsRow - удаляет все товары из блока .goods__row
+    */
+    clearGoodsRow() {
+        this.goodsRow.innerHTML = '';
+    }
+
+
+    /**
     *  Method render - создает и отображает товары на странице. 
     */
     render(data) {
@@ -63,7 +72,9 @@ class Goods {
 
                     let card = `<div class="goods" data-articul="${product['articul']}">`;
                     card += `<div class="goods__text">`;
-                    card += `<p class="goods__code">Код: ${product['articul']}</p>`;
+                    // card += `<p class="goods__code">Код: ${product['articul']}</p>`;
+                    card += `<p class="goods__code">${product['sales']}   / 
+                    ${product['reviews']} / ${product['rating']}</p>`;
                     card += `<i class="far fa-heart" aria-hidden="true"></i>`;
                     card += `</div>`;
                     card += `<div class="goods__image">`;

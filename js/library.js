@@ -9,8 +9,6 @@ function spaceBetweenNumbers(num) {
     return str
 }
 
-
-
 // обновляет данные из localStorage
 function reloadDataFromLS(key, data) {
     let dataLS = JSON.parse(localStorage.getItem(key));
@@ -21,5 +19,10 @@ function reloadDataFromLS(key, data) {
     else {
         return dataLS
     }
+}
+
+// удаляет класс CSS у элементов
+function removeCSSFromElems(classCSS, elems) {
+    elems.forEach(elem => elem.classList.remove(classCSS))
 }
 
