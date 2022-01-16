@@ -127,6 +127,5 @@ class Cart {
             this.total += this.sumProduct(product);
             this.cart.innerHTML += productHTML;
         }
-
     }
 }

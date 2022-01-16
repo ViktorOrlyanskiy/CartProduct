@@ -1069,4 +1069,5 @@ popularity.addEventListener('click', function () {
 
     products.sort((a, b) => Number(a.sales) > Number(b.sales) ? 1 : -1)
 
+
 });

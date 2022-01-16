@@ -10,6 +10,7 @@ function spaceBetweenNumbers(num) {
 }
 
 
+
 // обновляет данные из localStorage
 function reloadDataFromLS(key, data) {
     let dataLS = JSON.parse(localStorage.getItem(key));
