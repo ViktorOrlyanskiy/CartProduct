@@ -12,7 +12,7 @@
     text-rendering: auto;
     line-height: 1;
 }
-//
+
 .fa-bars:before {
     content: "\f0c9";
     font-size: 17px;
@@ -50,6 +50,16 @@
     content: "\f067";
     font-size: 16px;
     color: #666;
+}
+.fa-sort-amount-up:before {
+    content: "\f161";
+    font-size: 14px;
+    color: $hoverColorRed;
+}
+.fa-sort-amount-down-alt:before {
+    content: "\f884";
+    font-size: 14px;
+    color: $hoverColorRed;
 }
 
 @font-face {

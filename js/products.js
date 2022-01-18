@@ -1,7 +1,6 @@
 'use strict'
 
 // массивы которые приходят с Back-end
-
 const products = [
 
     {
@@ -1059,15 +1058,6 @@ const products = [
         "sales": "336",
         "reviews": "794",
         "rating": "610"
-    }
-
+    },
 ]
 
-
-// let popularity = document.querySelector('.popularity');
-// popularity.addEventListener('click', function () {
-
-//     products.sort((a, b) => Number(a.sales) > Number(b.sales) ? 1 : -1)
-
-
-// });

@@ -12,6 +12,8 @@ class Goods {
         this.data = data;
         this.count = 0;
         this.goodsRow = document.querySelector('.goods__row');
+        this.sortButton = document.querySelectorAll('.sort__item');
+        this.sortDirection = 'down';
     }
 
 
@@ -56,14 +58,36 @@ class Goods {
         this.goodsRow.innerHTML = '';
     }
 
+    /**
+    *  Method sortCards - сортирует товары в блоке .goods__row
+    */
+    sortCards(key) {
+        if (key === 'price') {
+            if (this.sortDirection === 'up') {
+                this.data.sort((a, b) => Number(a[key]) > Number(b[key]) ? 1 : -1);
+                this.sortDirection = 'down';
+            }
+            else {
+                this.data.sort((a, b) => Number(a[key]) < Number(b[key]) ? 1 : -1);
+                this.sortDirection = 'up';
+            }
+        }
+        else {
+            this.data.sort((a, b) => Number(a[key]) < Number(b[key]) ? 1 : -1);
+
+        }
+        this.clearGoodsRow();
+        this.render();
+        console.log(this.sortDirection)
+    }
+
 
     /**
     *  Method render - создает и отображает товары на странице. 
     */
     render(data) {
-        let goodsRow = document.querySelector('.goods__row');
         let count = 1;
-        for (let product of data) {
+        for (let product of this.data) {
             if (count <= 8) {
                 if (!this.checkProductInArray(product, listCards)) {
 
@@ -93,7 +117,7 @@ class Goods {
                     card += `</div>`;
                     card += `</div>`;
 
-                    goodsRow.innerHTML += card;
+                    this.goodsRow.innerHTML += card;
                     count++;
                 }
             }

@@ -68,6 +68,14 @@
     &__item_active:hover {
         color: #212121;
     }
+    &__price {
+        & .fa-sort-amount-up::before {
+            display: none;
+        }
+        & .fa-sort-amount-down-alt::before {
+            display: none;
+        }
+    }
 }
 
 // стили для карточек товаров

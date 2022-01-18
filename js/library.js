@@ -22,7 +22,14 @@ function reloadDataFromLS(key, data) {
 }
 
 // удаляет класс CSS у элементов
-function removeCSSFromElems(classCSS, elems) {
-    elems.forEach(elem => elem.classList.remove(classCSS))
+// function removeCSSFromElems(classCSS, elems) {
+//     elems.forEach(elem => elem.classList.remove(classCSS))
+// }
+function removeCSSFromElems(arrayCSS, elems) {
+    elems.forEach(elem => {
+        for (let classCSS of arrayCSS) {
+            elem.classList.remove(classCSS)
+        }
+    });
 }
 

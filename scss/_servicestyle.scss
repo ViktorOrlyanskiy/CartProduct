@@ -1,4 +1,26 @@
 .hidden {
     display: none;
 }
-//
+
+// регулирует отображение направления сортировки
+.price_up {
+    color: #212121;
+
+    & .fa-sort-amount-up::before {
+        display: inline;
+    }
+    & .fa-sort-amount-down-alt::before {
+        display: none;
+    }
+}
+
+.price_down {
+    color: #212121;
+
+    & .fa-sort-amount-up::before {
+        display: none;
+    }
+    & .fa-sort-amount-down-alt::before {
+        display: inline;
+    }
+}

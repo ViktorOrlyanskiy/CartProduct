@@ -147,6 +147,18 @@ h6 {
   color: #666;
 }
 
+.fa-sort-amount-up:before {
+  content: "\f161";
+  font-size: 14px;
+  color: #c50000;
+}
+
+.fa-sort-amount-down-alt:before {
+  content: "\f884";
+  font-size: 14px;
+  color: #c50000;
+}
+
 @font-face {
   font-family: "Font Awesome 5 Brands";
   font-style: normal;
@@ -776,4 +788,28 @@ h6 {
 
 .hidden {
   display: none;
+}
+
+.price_up {
+  color: #212121;
+}
+
+.price_up .fa-sort-amount-up::before {
+  display: inline;
+}
+
+.price_up .fa-sort-amount-down-alt::before {
+  display: none;
+}
+
+.price_down {
+  color: #212121;
+}
+
+.price_down .fa-sort-amount-up::before {
+  display: none;
+}
+
+.price_down .fa-sort-amount-down-alt::before {
+  display: inline;
 }

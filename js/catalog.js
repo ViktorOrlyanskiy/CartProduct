@@ -1,6 +1,5 @@
 'use strict'
 
-
 /**
  * Создает глобальные массивы для хранения товаров добавленные в корзину [dataCart], хранения количества добавленных товаров и итоговой сумму [dataService].
  * Обновляет и выводит данные из dataService в header
@@ -19,6 +18,7 @@ let dataService = {
 
 // глобальный массив для хранения отрисованных артикулов
 let listCards = [];
+
 
 
 // работа с блоком header -------------
@@ -61,6 +61,7 @@ showTotal(dataService['total']);
 
 
 // Работа с товарами каталога -------------
+
 drawProducts(products);
 
 let btnAddGoods = document.querySelector('.add-goods');
@@ -70,13 +71,12 @@ btnAddGoods.addEventListener('click', () => {
 
 // отрисовывает товары на странице и добавляет обработку события
 function drawProducts(products) {
-    let listProducts = new Goods();
-    listProducts.render(products);
-
-    checkCountCards(listProducts.getCountCards())
-    addEventOnGoods(products);
+    let listProducts = new Goods(products);
+    listProducts.render();
+    // checkCountCards(listProducts.getCountCards());
 
     sortProducts(listProducts);
+    addEventOnGoods(listProducts.data);
 
     function checkCountCards(count) {
         if (count < 8) {
@@ -85,6 +85,43 @@ function drawProducts(products) {
     }
 }
 
+// Сортирует товары 
+function sortProducts(listProducts) {
+    let sortButtons = document.querySelectorAll('.sort__item');
+
+    sortButtons.forEach(elem => {
+        elem.addEventListener('click', () => {
+            if (!elem.classList.contains('sort__item_active')) {
+
+                let key = elem.getAttribute('data-sort');
+                listCards = [];
+                listProducts.sortCards(key);
+
+                removeCSSFromElems(['sort__item_active'], sortButtons);
+
+                if (key !== 'price') {
+                    removeCSSFromElems(['price_up', 'price_down'], sortButtons);
+
+                    elem.classList.remove('price_active');
+                    elem.classList.add('sort__item_active');
+                }
+                else {
+                    if (elem.classList.contains('price_up')) {
+                        elem.classList.remove('price_up');
+                        elem.classList.add('price_down');
+                    }
+                    else {
+                        elem.classList.remove('price_down');
+                        elem.classList.add('price_up');
+                    }
+                }
+                addEventOnGoods(listProducts.data)
+            }
+        });
+    });
+
+
+}
 
 // добавляет событие на товары
 function addEventOnGoods() {
@@ -164,78 +201,6 @@ function addEventOnGoods() {
 }
 
 
-// Работа с сортировкой товаров -------------
-function sortProducts(listProducts) {
-
-    let SortButtons = document.querySelectorAll('.sort__item');
-    SortButtons.forEach(elem => {
-
-        elem.addEventListener('click', () => {
-            if (elem.classList.contains('popular')) {
-                if (!elem.classList.contains('sort__item_active')) {
-                    products.sort((a, b) => Number(a.sales) < Number(b.sales) ? 1 : -1)
-                    redrawsProductCards();
-
-                    removeCSSFromElems('sort__item_active', SortButtons);
-                    elem.classList.add('sort__item_active');
-                }
-            }
-            else if (elem.classList.contains('reviews')) {
-                if (!elem.classList.contains('sort__item_active')) {
-                    products.sort((a, b) => Number(a.reviews) < Number(b.reviews) ? 1 : -1)
-                    redrawsProductCards();
-
-                    removeCSSFromElems('sort__item_active', SortButtons);
-                    elem.classList.add('sort__item_active');
-                }
-            }
-            else if (elem.classList.contains('rating')) {
-                if (!elem.classList.contains('sort__item_active')) {
-                    products.sort((a, b) => Number(a.rating) < Number(b.rating) ? 1 : -1)
-                    redrawsProductCards();
-
-                    removeCSSFromElems('sort__item_active', SortButtons);
-                    elem.classList.add('sort__item_active');
-                }
-            }
-            else if (elem.classList.contains('sort-price')) {
-                // if (!elem.classList.contains('sort__item_active')) {
-                if (elem.classList.contains('up')) {
-                    products.sort((a, b) => Number(a.price) < Number(b.price) ? 1 : -1);
-                    elem.classList.remove('up');
-                    elem.classList.add('down');
-                    // sortProducts(listProducts)
-                }
-                else if (elem.classList.contains('down')) {
-                    products.sort((a, b) => Number(a.price) > Number(b.price) ? 1 : -1);
-                    elem.classList.remove('down');
-                    elem.classList.add('up');
-                    // sortProducts(listProducts)
-                }
-
-                redrawsProductCards();
-                sortProducts(listProducts)
-                removeCSSFromElems('sort__item_active', SortButtons);
-                // elem.classList.add('sort__item_active');
-                // }
-            }
-        });
-
-
-
-
-
-    });
-
-
-    // удаляет все товары и рисует их заново
-    function redrawsProductCards() {
-        listCards = [];
-        listProducts.clearGoodsRow();
-        drawProducts(products);
-    }
-
-}
 
 
 
