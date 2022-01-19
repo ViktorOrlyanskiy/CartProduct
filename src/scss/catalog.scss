@@ -1,0 +1,242 @@
+// Подключение обнуляющих стилей
+@import "_nullstyle";
+
+// Подключение шрифтов
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
+
+// Подключение глобальных переменных
+@import "_variables";
+
+// Подключение иконок
+@import "_icons";
+//
+// Глобальные стили
+.wrapper {
+    font-family: "Roboto";
+    font-weight: 400;
+}
+
+.container {
+    margin: 0 auto;
+    max-width: 1300px;
+}
+
+// Подключение стилей для header
+@import "_header";
+
+// стили для main
+.main {
+    &__row {
+        display: flex;
+        justify-content: space-between;
+    }
+}
+.sidebar {
+    flex: 0 0 300px;
+    margin: 0 20px 0 0;
+    background-color: cadetblue;
+}
+.content {
+    flex: 0 0 990px;
+}
+
+// Стили для баннера
+.banner {
+    margin: 20px 0 30px 0;
+    &__image {
+        border-radius: 10px 10px 0 0;
+        overflow: hidden;
+    }
+}
+
+// стили для блока сортировки
+.sort {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    margin: 15px 15px;
+
+    &__title {
+        color: #666;
+        padding: 6px 0;
+    }
+
+    &__item {
+        color: #999;
+        margin: 0 10px;
+        cursor: pointer;
+        user-select: none;
+        &_active {
+            color: #212121;
+        }
+    }
+    &__item:hover {
+        transition: 0.2s;
+        color: $hoverColorRed;
+    }
+    &__item_active:hover {
+        color: #212121;
+    }
+    &__price {
+        & .fa-sort-amount-up::before {
+            display: none;
+        }
+        & .fa-sort-amount-down-alt::before {
+            display: none;
+        }
+    }
+}
+
+// стили для карточек товаров
+.goods__row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 20px -10px 20px -10px;
+}
+
+.goods {
+    max-width: 220px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #dcdcdc;
+    border-radius: 5px;
+    padding: 10px 15px;
+    margin: 0 10px 20px 10px;
+
+    transition: 0.2;
+
+    &__text {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0 0 15px 0;
+
+        .fa-heart::before {
+            font-size: 18px;
+            color: #999;
+            cursor: pointer;
+        }
+
+        .fa-heart:hover:before {
+            color: $hoverColorRed;
+        }
+    }
+
+    &__code {
+        font-size: 12px;
+        color: #999;
+    }
+
+    &__image {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 0 30px 0;
+
+        img {
+            max-width: 190px;
+            max-height: 190px;
+        }
+    }
+
+    &__title {
+        flex: 1 1 auto;
+        max-height: 60px;
+        margin: 0 0 20px 0;
+        overflow: hidden;
+        a {
+            font-size: 14px;
+            line-height: 1.4;
+            color: #212121;
+            transition: 0.2;
+        }
+    }
+
+    &__title:hover {
+        a {
+            transition: 0.2;
+            color: $hoverColorRed;
+        }
+    }
+
+    &__line {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__price {
+        font-size: 18px;
+        color: #212121;
+        font-weight: 700;
+        span {
+            font-weight: 400;
+        }
+    }
+
+    &__button {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background-color: $mainColorRed;
+        transition: 0.2;
+        cursor: pointer;
+
+        .fa-shopping-cart::before {
+            position: relative;
+            top: 8px;
+            left: 8px;
+            font-size: 18px;
+            color: #fff;
+        }
+    }
+
+    &__button:hover {
+        transition: 0.2;
+        background-color: $hoverColorRed;
+
+        .fa-shopping-cart::before {
+            position: relative;
+            top: 8px;
+            left: 8px;
+            font-size: 18px;
+            color: #fff;
+        }
+    }
+}
+
+.goods:hover {
+    transition: 0.2;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.add-goods {
+    max-width: 100%;
+    height: 44px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+    font-size: 18px;
+    font-weight: 700;
+    color: #666;
+    cursor: pointer;
+    user-select: none;
+}
+
+.add-goods:hover {
+    transition: 0.1s;
+    box-shadow: 0 2px 8px 1px rgba(0, 0, 0, 0.5);
+}
+
+// стили для нижней кнопки
+.add-goods {
+    margin: 20px auto;
+}
+
+// стили для страницы cart.html
+@import "_cartstyle";
+// служебные стили для javaScript
+@import "_servicestyle";
