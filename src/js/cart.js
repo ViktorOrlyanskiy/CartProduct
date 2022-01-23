@@ -1,4 +1,8 @@
 'use strict'
+import Header from './class/Header.js';
+import Cart from './class/Cart.js';
+import { spaceBetweenNumbers } from './library.js';
+
 
 /**
  * Получет глобальные массивы из localStarage. 
@@ -16,6 +20,12 @@ let dataCart = JSON.parse(localStorage.getItem('dataCart'));
 
 // глобальный массив для хранения total и goodsCounter
 let dataService = JSON.parse(localStorage.getItem('dataService'));
+
+// создает header на странице
+; (function () {
+    let headerHTML = new Header();
+    headerHTML.render();
+})();
 
 
 // работа с блоком main -------------

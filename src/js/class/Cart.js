@@ -1,6 +1,8 @@
 'use strict'
 
-class Cart {
+import { spaceBetweenNumbers } from '../library.js';
+
+export default class Cart {
 
     /**
     * properties

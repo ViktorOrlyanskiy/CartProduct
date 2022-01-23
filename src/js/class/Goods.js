@@ -1,5 +1,8 @@
 'use strict'
 
+import { spaceBetweenNumbers } from '../library.js'
+
+
 export default class Goods {
 
     /**
@@ -81,9 +84,11 @@ export default class Goods {
         }
         this.clearGoodsRow();
         this.render();
-        console.log(this.sortDirection)
     }
 
+    /**
+    *  Method getListCards - получает список отрисованных товаров
+    */
     getListCards() {
         return this.listCards;
     }
@@ -95,10 +100,8 @@ export default class Goods {
         let count = 1;
         for (let product of this.data) {
             if (count <= 24) {
-                // if (!this.checkProductInArray(product, listCards)) {
-                if (!this.includesInListCards(product)) {
 
-                    // this.setCard(product, listCards);
+                if (!this.includesInListCards(product)) {
                     this.listCards.push(product);
                     this.setCountCards(count);
 

@@ -1,7 +1,8 @@
 'use strict'
 
-// массивы которые приходят с Back-end
-const products = [
+// Массив товаров который приходит с Back-end
+
+export const products = [
 
     {
         "articul": "51304834",
@@ -1059,5 +1060,4 @@ const products = [
         "reviews": "794",
         "rating": "610"
     },
-]
-
+];

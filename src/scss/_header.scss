@@ -1,10 +1,102 @@
 // Подключение глобальных переменных
-@import "_variables";
+// @import "_variables";
 
 .header {
     &__line_sticky {
         background-color: rgb(240, 240, 240);
-        box-shadow: 0 1px 5px 2px rgb(199, 199, 199);
+    }
+}
+
+.h-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &__label {
+        margin: 12px 56px 12px 0;
+
+        img {
+            width: 152px;
+            height: 76px;
+            border-radius: 10px;
+        }
+    }
+    &__title {
+        width: 170px;
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 1.3;
+        margin: 0 56px 0 0;
+        span {
+            display: block;
+        }
+    }
+    &__city {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0 56px 0 0;
+        cursor: pointer;
+        i::before {
+            position: relative;
+            top: -1px;
+            left: 0;
+            font-size: 14px;
+            margin: 0 10px 0 0;
+        }
+        p {
+            font-size: 12px;
+            color: #212121;
+        }
+        p:hover {
+            transition: 0.2s;
+            color: $hoverColorRed;
+        }
+    }
+
+    &__contacts {
+        flex: 1 1 auto;
+        margin: 0 50px 0 120px;
+    }
+
+    &__login {
+        display: flex;
+        justify-content: space-between;
+        cursor: pointer;
+        user-select: none;
+
+        i::before {
+            font-size: 18px;
+            margin: 0 10px 0 0;
+            position: relative;
+            top: -2px;
+            left: 0;
+        }
+        p {
+            font-weight: 700;
+            font-size: 16px;
+        }
+        p:hover {
+            transition: 0.2s;
+            color: $hoverColorRed;
+        }
+    }
+}
+.bottom-shadow {
+    box-shadow: 0 1px 5px 2px rgb(199, 199, 199);
+}
+.contacts {
+    &__tel {
+        font-size: 18px;
+        font-weight: 700;
+        color: $mainColorRed;
+        margin: 0 0 5px 0;
+    }
+
+    &__text {
+        font-size: 12px;
+        color: #212121;
+        margin: 10px 0 0 0;
     }
 }
 
@@ -16,13 +108,13 @@
     padding: 7px 0;
 
     &__btn-catalog {
-        width: 224px;
+        width: 300px;
         height: 44px;
         display: flex;
         justify-content: center;
         align-items: center;
         background-color: #666;
-        border-radius: 6px;
+        border-radius: 6px 6px 0 0;
         cursor: pointer;
         transition: 0.2s;
 
@@ -165,4 +257,25 @@
 .totalCSS {
     font-size: 18px;
     font-weight: 500;
+}
+
+.sticky-fixed {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    top: 0;
+    z-index: 10;
+    box-shadow: 0 1px 5px 2px rgb(199, 199, 199);
+    animation-name: showHeader;
+    animation-duration: 0.5s;
+}
+@keyframes showHeader {
+    0% {
+        opacity: 0.5;
+        top: -10px;
+    }
+    100% {
+        opacity: 1;
+        top: 0;
+    }
 }

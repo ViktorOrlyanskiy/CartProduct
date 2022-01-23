@@ -1,0 +1,40 @@
+.sidebar {
+}
+.catalog {
+    min-height: 437px;
+    border: 1px solid #dcdcdc;
+    border-top: none;
+    border-radius: 0 0 10px 10px;
+    padding: 16px 8px 12px 8px;
+    // margin: 20px 0 0 0;
+}
+.item-catalog {
+    // border: 1px solid red;
+    cursor: pointer;
+    padding: 12px 12px 12px 8px;
+    a {
+        display: flex;
+        justify-content: space-between;
+
+        color: #212121;
+        i:before {
+            opacity: 0;
+            font-size: 12px;
+        }
+    }
+}
+.item-catalog:hover {
+    background-color: #f3f3f3;
+    border-radius: 5px;
+    a {
+        color: $mainColorRed;
+
+        i:before {
+            opacity: 1;
+            font-size: 12px;
+        }
+    }
+}
+.item-catalog:hover:after {
+    content: "";
+}

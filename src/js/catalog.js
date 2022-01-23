@@ -1,7 +1,11 @@
 'use strict'
 
+import { products } from './products.js';
+import Header from './class/Header.js';
+import Slider from './class/Slider.js';
 import Goods from './class/Goods.js';
-
+import sortProducts from './functions/catalog/sortProducts.js';
+import { spaceBetweenNumbers, reloadDataFromLS, fixedHeader } from './library.js'
 
 /**
  * Создает глобальные массивы для хранения товаров добавленные в корзину [dataCart], хранения количества добавленных товаров и итоговой сумму [dataService].
@@ -19,12 +23,40 @@ let dataService = {
     'goodsCounter': 0,
 };
 
-// глобальный массив для хранения отрисованных артикулов
-let listCards = [];
-
-
 
 // работа с блоком header -------------
+
+// создает header на странице
+; (function () {
+    let showStickyMenu = true;
+    let headerHTML = new Header();
+    headerHTML.render(showStickyMenu);
+    window.onscroll = fixedHeader;
+})();
+
+
+; (function () {
+
+    let slider = new Slider();
+    slider.render();
+    slider.render();
+
+
+    slider.playSlider();
+
+    let btn = document.querySelector('.sticky__text');
+    function next() {
+        slider.nextSlide(this, next)
+    };
+    btn.addEventListener('click', next);
+
+})();
+
+
+
+
+
+
 
 //  Обновляет глобальные массивы
 dataCart = reloadDataFromLS('dataCart', dataCart);
@@ -71,7 +103,7 @@ function drawProducts(products) {
     listProducts.render();
     checkCountCards(listProducts.getCountCards());
 
-    sortProducts(listProducts);
+    sortProducts(listProducts, addEventOnGoods);
     addEventOnGoods(listProducts);
 
     let btnAddGoods = document.querySelector('.add-goods');
@@ -86,44 +118,8 @@ function drawProducts(products) {
         }
     }
 }
-drawProducts(products);
+// drawProducts(products);
 
-
-// Сортирует товары 
-function sortProducts(listProducts) {
-    let sortButtons = document.querySelectorAll('.sort__item');
-
-    sortButtons.forEach(elem => {
-        elem.addEventListener('click', () => {
-            if (!elem.classList.contains('sort__item_active')) {
-
-                let key = elem.getAttribute('data-sort');
-                // listCards = [];
-                listProducts.sortCards(key);
-
-                removeCSSFromElems(['sort__item_active'], sortButtons);
-
-                if (key !== 'price') {
-                    removeCSSFromElems(['price_up', 'price_down'], sortButtons);
-
-                    elem.classList.remove('price_active');
-                    elem.classList.add('sort__item_active');
-                }
-                else {
-                    if (elem.classList.contains('price_up')) {
-                        elem.classList.remove('price_up');
-                        elem.classList.add('price_down');
-                    }
-                    else {
-                        elem.classList.remove('price_down');
-                        elem.classList.add('price_up');
-                    }
-                }
-                addEventOnGoods(listProducts.data)
-            }
-        });
-    });
-}
 
 // добавляет событие на товары
 function addEventOnGoods(listProducts) {
@@ -135,7 +131,6 @@ function addEventOnGoods(listProducts) {
 
             if (target.classList.contains('add-in-cart')) {
                 let articul = card.getAttribute('data-articul');
-                // let product = returnProduct(articul, listCards);
                 let product = returnProduct(articul, listProducts.getListCards());
 
                 if (checkProductInArray(product, dataCart)) {
@@ -146,7 +141,6 @@ function addEventOnGoods(listProducts) {
                     dataService['goodsCounter']++;
                 }
                 else {
-                    // product = returnProduct(articul, listCards);
                     product = returnProduct(articul, listProducts.getListCards());
                     product['count'] = 1;
                     product['sumProduct'] = sumProduct(product);

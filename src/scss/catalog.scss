@@ -34,20 +34,19 @@
 .sidebar {
     flex: 0 0 300px;
     margin: 0 20px 0 0;
-    background-color: cadetblue;
 }
 .content {
     flex: 0 0 990px;
 }
 
-// Стили для баннера
+// Подключение стилей sidebar
+@import "_sidebar";
+
 .banner {
     margin: 20px 0 30px 0;
-    &__image {
-        border-radius: 10px 10px 0 0;
-        overflow: hidden;
-    }
 }
+// Подключение стилей slider
+@import "_banner";
 
 // стили для блока сортировки
 .sort {
