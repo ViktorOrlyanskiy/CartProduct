@@ -37,12 +37,21 @@ const library = {
             headerSticky.classList.remove('sticky-fixed');
         }
     },
+    // Возвращает элемент HTML с указанным переданным массивом классов CSS
+    returnElementHTML(teg, array) {
+        let element = document.createElement(teg);
+        for (let key of array) {
+            element.classList.add(key);
+        }
+        return element
+    },
 };
 
 export const spaceBetweenNumbers = library.spaceBetweenNumbers;
 export const reloadDataFromLS = library.reloadDataFromLS;
 export const removeCSSFromElems = library.removeCSSFromElems;
 export const fixedHeader = library.fixedHeader;
+export const returnElementHTML = library.returnElementHTML;
 
 
 

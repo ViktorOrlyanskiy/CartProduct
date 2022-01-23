@@ -1,45 +1,77 @@
 'use strict'
-
+import { returnElementHTML } from "../library";
 
 export default class Slider {
 
     /**
-    * properties
+    * properties дописать функцию назад
     */
 
-    constructor() {
-        // this.sliderHTML = document.querySelector('.banner__image');
-        this.sliderHTML = document.querySelector('.slider__image');
-        this.firstHiddenSlide = '';
+    constructor(bannerHTML, links) {
+        this.bannerHTML = bannerHTML;
+        this.links = links;
+
+        this.sliderHTML = returnElementHTML('div', ['slider__image']);
+        this.arrowNext = returnElementHTML('i', ['next', 'fas', 'fa-chevron-right']);
+        this.arrowBack = returnElementHTML('i', ['next', 'fas', 'fa-chevron-left']);
+
         this.currentSlide = '';
         this.lastSlide = '';
-        this.links = ['./img/banner-0.jpg', './img/banner-1.jpg', './img/banner-2.jpg',
-            './img/banner-3.jpg', './img/banner-4.jpg',];
 
         this.step = 0;
         this.opacity = 1;
         this.counterPlus = 0;
         this.counterMinus = 1;
+
+        this.action = '';
+        this.drawArrows();
+    }
+
+    setAction(action) {
+        this.action = action;
+    }
+
+    /**
+    *  Method drawArrows - рисует стрелки на слайдере
+    */
+    drawArrows() {
+        let arrows = document.createElement('div');
+        arrows.classList.add('slider__arrows');
+        arrows.append(this.arrowBack);
+        arrows.append(this.arrowNext);
+        this.bannerHTML.append(arrows)
+    }
+
+    /**
+    *  Method getArrow - возвращает стрелку
+    */
+    getArrow(name) {
+        if (name === 'next') {
+            return this.arrowNext
+        }
+        else if (name === 'back') {
+            return this.arrowBack
+        }
     }
 
     /**
     *  Method changeSlide - плавно меняет слайды 
     */
-    changeSlide() {
+    changeSlide(timeout = 10) {
         this.currentSlide.style.opacity = `${this.counterMinus}`;
         this.lastSlide.style.opacity = `${this.counterPlus}`;
-        this.counterPlus = this.counterPlus + 0.01;
-        this.counterMinus = this.counterMinus - 0.01;
+        this.counterPlus = this.counterPlus + 0.02;
+        this.counterMinus = this.counterMinus - 0.02;
 
         if (this.counterMinus > 0) {
-            setTimeout(this.changeSlide.bind(this), 15);
+            setTimeout(this.changeSlide.bind(this), timeout);
         }
     }
 
     /**
     *  Method removeSlide - удаляет текущий слайд
     */
-    removeSlide(elem) {
+    removeSlide() {
         this.currentSlide.remove();
     }
 
@@ -55,29 +87,32 @@ export default class Slider {
     /**
     *  Method nextSlide - показывает следующий слайд
     */
-    playSlider() {
+    playSlider(action) {
 
-        let slides = this.sliderHTML.querySelectorAll('.slide');
-        for (let i = 0; i < slides.length - 1; i++) {
-            if (i === 0) {
-                this.currentSlide = slides[i];
-                this.lastSlide = slides[i + 1];
+        if (this.action !== 'stop') {
+
+            let slides = this.sliderHTML.querySelectorAll('.slide');
+            for (let i = 0; i < slides.length - 1; i++) {
+                if (i === 0) {
+                    this.currentSlide = slides[i];
+                    this.lastSlide = slides[i + 1];
+                }
             }
+
+            this.changeSlide();
+
+            setTimeout(this.changeClassCSS.bind(this), 2000)
+            setTimeout(this.removeSlide.bind(this), 2000)
+            setTimeout(this.render.bind(this), 2000)
+            setTimeout(this.playSlider.bind(this), 8000)
         }
-
-        this.changeSlide();
-
-        setTimeout(this.changeClassCSS.bind(this), 2000)
-        setTimeout(this.removeSlide.bind(this), 2000)
-        setTimeout(this.render.bind(this), 2000)
-        setTimeout(this.playSlider.bind(this), 10000)
     }
 
     /**
     *  Method nextSlide - показывает следующий слайд
     */
-    nextSlide(btn, func) {
-        btn.removeEventListener('click', func)
+    nextSlide(arrowNext, next) {
+        arrowNext.removeEventListener('click', next);
 
         let slides = this.sliderHTML.querySelectorAll('.slide');
         for (let i = 0; i < slides.length - 1; i++) {
@@ -87,17 +122,41 @@ export default class Slider {
             }
         }
 
-        this.changeSlide();
+        this.changeSlide(10);
 
-        setTimeout(this.changeClassCSS.bind(this), 2000);
-        setTimeout(this.removeSlide.bind(this), 2000);
-        setTimeout(this.render.bind(this), 2000);
+        setTimeout(this.changeClassCSS.bind(this), 1000);
+        setTimeout(this.removeSlide.bind(this), 1000);
+        setTimeout(this.render.bind(this), 1000);
 
         setTimeout(() => {
-            btn.addEventListener('click', func);
-        }, 2000);
+            arrowNext.addEventListener('click', next);
+        }, 200);
     }
 
+    /**
+    *  Method backSlide - показывает следующий слайд !не работает
+    */
+    backSlide(arrowBack, back) {
+        arrowBack.removeEventListener('click', back);
+
+        let slides = this.sliderHTML.querySelectorAll('.slide');
+        for (let i = 0; i < slides.length - 1; i++) {
+            if (i === 0) {
+                this.currentSlide = slides[i];
+                this.lastSlide = slides[i + 1];
+            }
+        }
+
+        this.changeSlide(10);
+
+        setTimeout(this.changeClassCSS.bind(this), 1000);
+        setTimeout(this.removeSlide.bind(this), 1000);
+        setTimeout(this.render.bind(this), 1000);
+
+        setTimeout(() => {
+            arrowBack.addEventListener('click', back);
+        }, 200);
+    }
 
     /**
     *  Method render - отрисовывает header на странице
@@ -110,15 +169,20 @@ export default class Slider {
         let img = document.createElement('a');
         img.setAttribute('href', '#');
         img.classList.add('slide');
+
         if (this.opacity !== 0) {
             img.classList.add('current-slide');
         }
         else {
             img.classList.add('next-slide');
         }
+
         img.style.opacity = `${this.opacity}`;
         img.innerHTML = `<img src="${this.links[this.step]}" alt="#">`;
+
         this.sliderHTML.append(img);
+        this.bannerHTML.prepend(this.sliderHTML);
+
 
         if (this.step === this.links.length - 1) {
             this.step = 0;

@@ -177,6 +177,12 @@ h6 {
   color: #d60000;
 }
 
+.fa-chevron-left:before {
+  content: "\f053";
+  font-size: 14px;
+  color: #d60000;
+}
+
 @font-face {
   font-family: "Font Awesome 5 Brands";
   font-style: normal;

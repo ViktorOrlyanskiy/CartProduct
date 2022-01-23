@@ -42,11 +42,8 @@
 // Подключение стилей sidebar
 @import "_sidebar";
 
-.banner {
-    margin: 20px 0 30px 0;
-}
 // Подключение стилей slider
-@import "_banner";
+@import "_slider";
 
 // стили для блока сортировки
 .sort {

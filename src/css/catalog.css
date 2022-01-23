@@ -177,6 +177,12 @@ h6 {
   color: #d60000;
 }
 
+.fa-chevron-left:before {
+  content: "\f053";
+  font-size: 14px;
+  color: #d60000;
+}
+
 @font-face {
   font-family: "Font Awesome 5 Brands";
   font-style: normal;
@@ -693,10 +699,10 @@ h6 {
 }
 
 .banner {
-  margin: 20px 0 30px 0;
-}
-
-.slider {
+  width: 100%;
+  position: relative;
+  top: 0;
+  left: 0;
   margin: 20px 0 30px 0;
 }
 
@@ -730,6 +736,64 @@ h6 {
   left: 0;
   opacity: 1;
   z-index: 1;
+}
+
+.slider__arrows {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  position: absolute;
+  top: calc(50% - 22px);
+  left: 0;
+  opacity: 0;
+  z-index: 1;
+  padding: 0 5px;
+}
+
+.slider__arrows i::before {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #fff;
+  border-radius: 50%;
+  font-size: 22px;
+  color: #666;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.slider__arrows i:hover:before {
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+  -webkit-box-shadow: 0 0 5px 2px #c7c7c7;
+          box-shadow: 0 0 5px 2px #c7c7c7;
+}
+
+.slider__arrows i:first-child:before {
+  padding: 12px 18px 12px 15px;
+}
+
+.slider__arrows i:last-child:before {
+  padding: 12px 15px 12px 18px;
+}
+
+.banner:hover .slider__arrows {
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  opacity: 1;
 }
 
 .sort {

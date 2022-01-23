@@ -76,6 +76,11 @@
     font-size: 14px;
     color: $mainColorRed;
 }
+.fa-chevron-left:before {
+    content: "\f053";
+    font-size: 14px;
+    color: $mainColorRed;
+}
 
 @font-face {
     font-family: "Font Awesome 5 Brands";
