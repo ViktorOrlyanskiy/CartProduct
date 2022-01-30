@@ -1,5 +1,6 @@
 'use strict'
 import Header from './class/Header.js';
+import Footer from './class/Footer.js';
 import Cart from './class/Cart.js';
 import { spaceBetweenNumbers } from './library.js';
 
@@ -128,5 +129,9 @@ function updateLS(key, data) {
     return JSON.parse(localStorage.getItem(key));
 }
 
-
+// создает footer и выводит его на страницу
+{
+    let footerHTML = new Footer();
+    footerHTML.render();
+}
 

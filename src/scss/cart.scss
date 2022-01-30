@@ -26,7 +26,8 @@
 
 // стили для main
 .main {
-    margin: 30px 0 0 0;
+    margin: 30px 0 50px 0;
+    min-height: 400px;
     &__title {
         font-size: 28px;
         font-weight: 700;
@@ -251,6 +252,9 @@
         background-color: $hoverColorRed;
     }
 }
+
+// Подключение стилей footer
+@import "_footer";
 
 // служебные стили для javaScript
 @import "_servicestyle";

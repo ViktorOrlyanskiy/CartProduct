@@ -2,6 +2,7 @@
 
 import { products } from './products.js';
 import Header from './class/Header.js';
+import Footer from './class/Footer.js';
 import Slider from './class/Slider.js';
 import Goods from './class/Goods.js';
 import sortProducts from './functions/catalog/sortProducts.js';
@@ -205,9 +206,11 @@ function addEventOnGoods(listProducts) {
     }
 }
 
-
-
-
+// создает footer и выводит его на страницу
+{
+    let footerHTML = new Footer();
+    footerHTML.render();
+}
 
 
 

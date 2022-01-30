@@ -19,6 +19,7 @@
 .container {
     margin: 0 auto;
     max-width: 1300px;
+    // border: 1px solid green;
 }
 
 // Подключение стилей для header
@@ -26,6 +27,7 @@
 
 // стили для main
 .main {
+    padding: 0 0 50px 0;
     &__row {
         display: flex;
         justify-content: space-between;
@@ -232,7 +234,11 @@
     margin: 20px auto;
 }
 
+// Подключение стилей footer
+@import "_footer";
+
 // стили для страницы cart.html
-@import "_cartstyle";
+// @import "_cartstyle";
+
 // служебные стили для javaScript
 @import "_servicestyle";
