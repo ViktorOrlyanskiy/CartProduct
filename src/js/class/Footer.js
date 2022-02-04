@@ -54,11 +54,11 @@ export default class Footer {
             list5: {
                 title: '',
                 items: [
-                    { src: '/src/img/icon-y.png', link: '#' },
-                    { src: '/src/img/icon-vk.png', link: '#' },
-                    { src: '/src/img/icon-f.png', link: '#' },
-                    { src: '/src/img/icon-i.png', link: '#' },
-                    { src: '/src/img/icon-t.png', link: '#' },
+                    { src: './src/img/icon-y.png', link: '#' },
+                    { src: './src/img/icon-vk.png', link: '#' },
+                    { src: './src/img/icon-f.png', link: '#' },
+                    { src: './src/img/icon-i.png', link: '#' },
+                    { src: './src/img/icon-t.png', link: '#' },
                 ],
                 classCSS: { ul: 'icons__list', li: 'icons__item', },
             },
@@ -130,7 +130,7 @@ export default class Footer {
                     ${this.createIcons(this.data.list5)}
                     </div>
                     <div class="social-links__rating">
-                        <img src="/src/img/rating.png" alt="#">
+                        <img src="./src/img/rating.png" alt="#">
                     </div>
                 </div>
             </div>
