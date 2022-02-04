@@ -25,22 +25,20 @@ let dataService = {
 };
 
 
-// работа с блоком header -------------
-
 // создает header и выводит его на страницу
-; (function () {
+{
     let showStickyMenu = true;
     let headerHTML = new Header();
     headerHTML.render(showStickyMenu);
     window.onscroll = fixedHeader;
-})();
+}
 
 
 // создает slider, добавляет события на стрелки и выводит его на страницу
-; (function () {
+{
     let bannerHTML = document.querySelector('.banner');
-    let links = ['./img/banner-0.jpg', './img/banner-1.jpg', './img/banner-2.jpg',
-        './img/banner-3.jpg', './img/banner-4.jpg',];
+    let links = ['./src/img/banner-0.jpg', './src/img/banner-1.jpg', './src/img/banner-2.jpg',
+        './src/img/banner-3.jpg', './src/img/banner-4.jpg',];
 
     let slider = new Slider(bannerHTML, links);
     slider.render();
@@ -62,7 +60,7 @@ let dataService = {
 
     arrowNext.addEventListener('click', next);
     arrowBack.addEventListener('click', back);
-})();
+}
 
 
 

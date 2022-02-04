@@ -23,10 +23,10 @@ let dataCart = JSON.parse(localStorage.getItem('dataCart'));
 let dataService = JSON.parse(localStorage.getItem('dataService'));
 
 // создает header на странице
-; (function () {
+{
     let headerHTML = new Header();
     headerHTML.render();
-})();
+}
 
 
 // работа с блоком main -------------

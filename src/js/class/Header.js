@@ -20,7 +20,7 @@ export default class Header {
                     <div class="h-info">
                         <div class="h-info__label">
                             <a href="index.html">
-                                <img src="./img/label.png" alt="#">
+                                <img src="./src/img/label.png" alt="#">
                             </a>
                         </div>
                         <div class="h-info__title">Цены ниже, <span>доставка быстрее!</span></div>

@@ -29,6 +29,7 @@
     margin: 30px 0 50px 0;
     min-height: 400px;
     &__title {
+        // margin: 30px 0 70px 0;
         font-size: 28px;
         font-weight: 700;
         color: #212121;
@@ -52,6 +53,7 @@
 
 .cart {
     margin: 50px 0 50px 0;
+    // margin: 0 0 50px 0;
 }
 .product {
     border-top: 1px solid #eee;
@@ -168,30 +170,30 @@
     border-bottom: 1px solid #eee;
 }
 
-.btn {
-    &__back-catalog {
+.back-arrow {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+
+    .fa-chevron-left {
+        font-size: 10px;
+        padding: 0 0 2px 0;
+        margin: 0 20px 0 0;
+    }
+    a {
         display: flex;
-        justify-content: start;
         align-items: center;
-        .fa-chevron-left {
-            font-size: 10px;
-            padding: 0 0 2px 0;
-            margin: 0 20px 0 0;
-        }
-        a {
-            display: flex;
-            align-items: center;
-            color: #212121;
-            user-select: none;
-        }
-        a:hover {
-            color: $hoverColorRed;
-        }
+        color: #212121;
+        user-select: none;
+    }
+    a:hover {
+        color: $hoverColorRed;
     }
 }
 
 .column {
     &__total {
+        // padding: 90px 0 0 0;
     }
 }
 .total {
@@ -255,6 +257,9 @@
 
 // Подключение стилей footer
 @import "_footer";
+
+// Подключение стилей оформления заказа
+@import "_ordering";
 
 // служебные стили для javaScript
 @import "_servicestyle";
